@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react"
+import './style.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [quote,setquote]=React.useState("");
 
+
+  // fetch the data
+const set= React.useEffect(()=>{
+  fetch("https://api.kanye.rest/")
+  .then(res=>res.json())
+  .then(data=>setquote(data.quote))
+  },[])
+
+
+  return(
+    <div className="con">
+      <h1 className="div-head">Grab the KANYE quote</h1>
+      <button className="-btn" onClick={set}>Grab Quote</button>
+      <p className="quotes">{quote}</p>
+    </div>
+  )
+
+}
 export default App;
