@@ -1,7 +1,6 @@
 import './App.css';
 import React from "react"
 import './style.css'
-import {useEffect} from 'react';
 
 function App() {
   const [quote,setquote]=React.useState("");
@@ -10,7 +9,7 @@ function App() {
     fetch("https://api.kanye.rest")
       .then(res => res.json())
       .then(data=>setquote(data.quote))
-       }
+  }
 
   // fetch the data
  React.useEffect(function(){
